@@ -1,0 +1,210 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 Edg/145.0.0.0" version="29.4.0">
+  <diagram name="WeatherWise Architecture" id="jHIspLuQvt2PEVAOSh6M">
+    <mxGraphModel dx="1038" dy="1058" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="700" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-106" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=24;fontStyle=1;fontColor=#FF66B2;" value="🐰 Система Анимированного Тамагочи (Клиент-Серверная архитектура) 🐰" vertex="1">
+          <mxGeometry height="50" width="1000" x="1010" y="1240" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-107" parent="1" style="swimlane;whiteSpace=wrap;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=1;fillColor=#FFCCFF;strokeColor=#FF66B2;fontColor=#993366;" value="СЕРВЕР (animated_server.py)" vertex="1">
+          <mxGeometry height="800" width="500" x="890" y="1310" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-108" parent="ydifSvVQQ7FqZEYnpbGd-107" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF99CC;fontColor=#FFFFFF;strokeColor=#FF66B2;" value="Flask приложение (app)" vertex="1">
+          <mxGeometry height="60" width="500" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-109" parent="ydifSvVQQ7FqZEYnpbGd-107" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#FFCC99;strokeColor=#FF9933;" value="Хранилище pets = {}&lt;br&gt;(словарь с блокировкой lock)" vertex="1">
+          <mxGeometry height="80" width="500" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-110" parent="ydifSvVQQ7FqZEYnpbGd-107" style="swimlane;whiteSpace=wrap;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=1;fillColor=#CCCCFF;strokeColor=#6666CC;" value="AnimatedTamagotchi&lt;br&gt;(Класс питомца)" vertex="1">
+          <mxGeometry height="210" width="500" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-111" parent="ydifSvVQQ7FqZEYnpbGd-110" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="Атрибуты:&lt;br&gt;• pet_id, name, sprite&lt;br&gt;• hunger, cleanliness, happiness, energy (0-100)&lt;br&gt;• age, is_alive, mood&lt;br&gt;• animation_state, animation_frame&lt;br&gt;• messages, owners" vertex="1">
+          <mxGeometry height="100" width="500" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-112" parent="ydifSvVQQ7FqZEYnpbGd-110" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="Методы:&lt;br&gt;• update() - обновление состояния&lt;br&gt;• get_current_sprite() - получение спрайта&lt;br&gt;• to_dict() - сериализация" vertex="1">
+          <mxGeometry height="70" width="500" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-113" parent="ydifSvVQQ7FqZEYnpbGd-107" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFF99;strokeColor=#FFCC00;" value="ANIMATION_FRAMES&lt;br&gt;(Словарь анимаций)" vertex="1">
+          <mxGeometry height="100" width="500" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-114" parent="ydifSvVQQ7FqZEYnpbGd-113" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="8 состояний:&lt;br&gt;• idle (статичная)&lt;br&gt;• eating (4 кадра)&lt;br&gt;• cleaning (4 кадра)&lt;br&gt;• playing (4 кадра)&lt;br&gt;• sleeping (2 кадра)&lt;br&gt;• happy (4 кадра)&lt;br&gt;• sad (2 кадра)&lt;br&gt;• dead (1 кадр)" vertex="1">
+          <mxGeometry height="130" width="180" x="10" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-115" parent="ydifSvVQQ7FqZEYnpbGd-107" style="swimlane;whiteSpace=wrap;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=1;fillColor=#CCFFFF;strokeColor=#339999;" value="API ЭНДПОИНТЫ:" vertex="1">
+          <mxGeometry height="160" width="500" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-116" parent="ydifSvVQQ7FqZEYnpbGd-115" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="GET /api/health - проверка сервера" vertex="1">
+          <mxGeometry height="20" width="500" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-117" parent="ydifSvVQQ7FqZEYnpbGd-115" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="GET /api/ip - получение IP адреса" vertex="1">
+          <mxGeometry height="20" width="500" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-118" parent="ydifSvVQQ7FqZEYnpbGd-115" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="GET /api/pets - список всех питомцев" vertex="1">
+          <mxGeometry height="20" width="500" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-119" parent="ydifSvVQQ7FqZEYnpbGd-115" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="GET /api/pet/&lt;pet_id&gt; - получить питомца" vertex="1">
+          <mxGeometry height="20" width="500" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-120" parent="ydifSvVQQ7FqZEYnpbGd-115" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="POST /api/pet/&lt;pet_id&gt;/join - присоединиться" vertex="1">
+          <mxGeometry height="20" width="500" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-121" parent="ydifSvVQQ7FqZEYnpbGd-115" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="POST /api/pet/&lt;pet_id&gt;/{feed,clean,play,rest,message,rename} - действия" vertex="1">
+          <mxGeometry height="30" width="500" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-122" parent="ydifSvVQQ7FqZEYnpbGd-107" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CCFFCC;strokeColor=#33CC33;" value="generate_pet_response()&lt;br&gt;(Генерация ответов питомца)" vertex="1">
+          <mxGeometry height="70" width="500" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-123" parent="ydifSvVQQ7FqZEYnpbGd-107" style="swimlane;whiteSpace=wrap;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=1;fillColor=#FFCCCC;strokeColor=#CC3333;" value="Автосохранение:" vertex="1">
+          <mxGeometry height="80" width="500" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-124" parent="ydifSvVQQ7FqZEYnpbGd-123" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="• SAVE_FILE = &#39;animated_tamagotchi_save.json&#39;&lt;br&gt;• save_pets() / load_pets()&lt;br&gt;• auto_save_worker() (каждые 60 сек)" vertex="1">
+          <mxGeometry height="50" width="500" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-125" parent="1" style="swimlane;whiteSpace=wrap;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=1;fillColor=#CCE5FF;strokeColor=#3399FF;fontColor=#003366;" value="КЛИЕНТ (animated_client.py)" vertex="1">
+          <mxGeometry height="830" width="560" x="1530" y="1310" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-126" parent="ydifSvVQQ7FqZEYnpbGd-125" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66CCFF;fontColor=#FFFFFF;strokeColor=#3399FF;" value="AnimatedTamagotchiClient&lt;br&gt;(Главный класс клиента)" vertex="1">
+          <mxGeometry height="60" width="560" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-127" parent="ydifSvVQQ7FqZEYnpbGd-125" style="swimlane;whiteSpace=wrap;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=1;fillColor=#F0F0F0;strokeColor=#666666;" value="Настройки клиента:" vertex="1">
+          <mxGeometry height="110" width="560" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-128" parent="ydifSvVQQ7FqZEYnpbGd-127" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="• server_url = http://localhost:5000&lt;br&gt;• pet_id = &#39;animated_pet&#39;&lt;br&gt;• owner_name = &#39;Хозяин&#39;&lt;br&gt;• update_interval = 2000ms&lt;br&gt;• degrade_interval = 10000ms&lt;br&gt;• animation_speed = 200ms" vertex="1">
+          <mxGeometry height="80" width="560" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-129" parent="ydifSvVQQ7FqZEYnpbGd-125" style="swimlane;whiteSpace=wrap;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=1;fillColor=#FFFFCC;strokeColor=#CCCC00;" value="Создание улучшенных спрайтов:" vertex="1">
+          <mxGeometry height="150" width="560" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-130" parent="ydifSvVQQ7FqZEYnpbGd-129" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="Типы питомцев: cat, dog, fox" vertex="1">
+          <mxGeometry height="20" width="560" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-131" parent="ydifSvVQQ7FqZEYnpbGd-129" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="Состояния: idle, eating, cleaning, playing, sleeping, happy, sad, excited (8 состояний)" vertex="1">
+          <mxGeometry height="20" width="560" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-132" parent="ydifSvVQQ7FqZEYnpbGd-129" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="Кадров: 8 для каждого состояния" vertex="1">
+          <mxGeometry height="20" width="560" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-133" parent="ydifSvVQQ7FqZEYnpbGd-129" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="Методы рисования:&lt;br&gt;• draw_animated_cat_fixed()&lt;br&gt;• draw_animated_dog_fixed()&lt;br&gt;• draw_animated_fox_fixed()" vertex="1">
+          <mxGeometry height="50" width="560" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-134" parent="ydifSvVQQ7FqZEYnpbGd-125" style="swimlane;whiteSpace=wrap;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=1;fillColor=#E6E6FA;strokeColor=#9370DB;" value="Элементы интерфейса:" vertex="1">
+          <mxGeometry height="260" width="560" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-135" parent="ydifSvVQQ7FqZEYnpbGd-134" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="• Заголовок с названием" vertex="1">
+          <mxGeometry height="20" width="560" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-136" parent="ydifSvVQQ7FqZEYnpbGd-134" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="• Выбор типа питомца (Кот, Собака, Лиса)" vertex="1">
+          <mxGeometry height="20" width="560" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-137" parent="ydifSvVQQ7FqZEYnpbGd-134" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="• Статус бар (подключение к серверу)" vertex="1">
+          <mxGeometry height="20" width="560" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-138" parent="ydifSvVQQ7FqZEYnpbGd-134" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="• Фрейм с анимированным питомцем (Canvas 200x200)" vertex="1">
+          <mxGeometry height="20" width="560" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-139" parent="ydifSvVQQ7FqZEYnpbGd-134" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="• Прогресс-бары: Голод, Чистота, Счастье, Энергия" vertex="1">
+          <mxGeometry height="20" width="560" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-140" parent="ydifSvVQQ7FqZEYnpbGd-134" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="• Кнопки действий:&lt;br&gt;  🍖 Покормить | 🛁 Помыть | 🎾 Поиграть&lt;br&gt;  💤 Спать | 🐾 Погладить | 🏆 Взбодрить | ✏️ Имя" vertex="1">
+          <mxGeometry height="60" width="560" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-141" parent="ydifSvVQQ7FqZEYnpbGd-134" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="• Чат с питомцем (ScrolledText + поле ввода)" vertex="1">
+          <mxGeometry height="20" width="560" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-142" parent="ydifSvVQQ7FqZEYnpbGd-134" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="• Информационная панель (анимация, время обновления)" vertex="1">
+          <mxGeometry height="20" width="560" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-143" parent="ydifSvVQQ7FqZEYnpbGd-134" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="• Предупреждение об ухудшении показателей" vertex="1">
+          <mxGeometry height="20" width="560" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-144" parent="ydifSvVQQ7FqZEYnpbGd-125" style="swimlane;whiteSpace=wrap;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=1;fillColor=#FFE5CC;strokeColor=#FF9933;" value="Система анимации:" vertex="1">
+          <mxGeometry height="140" width="560" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-145" parent="ydifSvVQQ7FqZEYnpbGd-144" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="Параметры анимации:&lt;br&gt;• animation_phase (волны)&lt;br&gt;• wag_angle (виляние)&lt;br&gt;• bounce_offset (подпрыгивание)&lt;br&gt;• eye_blink_timer (моргание)" vertex="1">
+          <mxGeometry height="60" width="560" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-146" parent="ydifSvVQQ7FqZEYnpbGd-144" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="Методы:&lt;br&gt;• animate_pet() - основной цикл анимации&lt;br&gt;• show_loading_animation() - загрузка&lt;br&gt;• show_fallback_emoji() - запасной вариант" vertex="1">
+          <mxGeometry height="50" width="560" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-147" parent="ydifSvVQQ7FqZEYnpbGd-125" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#CCCCCC;strokeColor=#666666;" value="Потоки выполнения:" vertex="1">
+          <mxGeometry height="70" width="560" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-148" parent="ydifSvVQQ7FqZEYnpbGd-147" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="• Поток подключения&lt;br&gt;• schedule_update() - обновление данных&lt;br&gt;• schedule_degrade() - ухудшение показателей&lt;br&gt;• animate_pet() - анимация" vertex="1">
+          <mxGeometry height="60" width="240" x="10" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-149" edge="1" parent="1" source="ydifSvVQQ7FqZEYnpbGd-108" target="ydifSvVQQ7FqZEYnpbGd-109">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-150" edge="1" parent="1" source="ydifSvVQQ7FqZEYnpbGd-108" target="ydifSvVQQ7FqZEYnpbGd-110">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-151" edge="1" parent="1" source="ydifSvVQQ7FqZEYnpbGd-110" target="ydifSvVQQ7FqZEYnpbGd-113">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-152" edge="1" parent="1" source="ydifSvVQQ7FqZEYnpbGd-108" target="ydifSvVQQ7FqZEYnpbGd-115">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-153" edge="1" parent="1" source="ydifSvVQQ7FqZEYnpbGd-115" target="ydifSvVQQ7FqZEYnpbGd-122">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-154" edge="1" parent="1" source="ydifSvVQQ7FqZEYnpbGd-109" target="ydifSvVQQ7FqZEYnpbGd-123">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-155" edge="1" parent="1" source="ydifSvVQQ7FqZEYnpbGd-126" target="ydifSvVQQ7FqZEYnpbGd-127">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-156" edge="1" parent="1" source="ydifSvVQQ7FqZEYnpbGd-126" target="ydifSvVQQ7FqZEYnpbGd-129">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-157" edge="1" parent="1" source="ydifSvVQQ7FqZEYnpbGd-126" target="ydifSvVQQ7FqZEYnpbGd-134">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-158" edge="1" parent="1" source="ydifSvVQQ7FqZEYnpbGd-126" target="ydifSvVQQ7FqZEYnpbGd-144">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-159" edge="1" parent="1" source="ydifSvVQQ7FqZEYnpbGd-144" target="ydifSvVQQ7FqZEYnpbGd-147">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-160" edge="1" parent="1" source="ydifSvVQQ7FqZEYnpbGd-126" target="ydifSvVQQ7FqZEYnpbGd-108" value="HTTP запросы (REST API)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1650" y="1340" />
+              <mxPoint x="1140" y="1340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-161" parent="1" style="swimlane;whiteSpace=wrap;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=1;fillColor=#F8F9FA;" value="Условные обозначения:" vertex="1">
+          <mxGeometry height="210" width="250" x="850" y="2030" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-162" parent="ydifSvVQQ7FqZEYnpbGd-161" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="💗 Розовый - серверная часть" vertex="1">
+          <mxGeometry height="20" width="250" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-163" parent="ydifSvVQQ7FqZEYnpbGd-161" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="💙 Голубой - клиентская часть" vertex="1">
+          <mxGeometry height="20" width="250" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-164" parent="ydifSvVQQ7FqZEYnpbGd-161" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="📦 Цилиндр - хранилища данных" vertex="1">
+          <mxGeometry height="20" width="250" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-165" parent="ydifSvVQQ7FqZEYnpbGd-161" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="🎨 Желтый - анимации/спрайты" vertex="1">
+          <mxGeometry height="20" width="250" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-166" parent="ydifSvVQQ7FqZEYnpbGd-161" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="📋 Сиреневый - интерфейс" vertex="1">
+          <mxGeometry height="20" width="250" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-167" parent="ydifSvVQQ7FqZEYnpbGd-161" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="🔷 Голубой - классы" vertex="1">
+          <mxGeometry height="20" width="250" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-168" parent="ydifSvVQQ7FqZEYnpbGd-161" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="🟢 Зеленый - генерация ответов" vertex="1">
+          <mxGeometry height="20" width="250" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-169" parent="ydifSvVQQ7FqZEYnpbGd-161" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="🔴 Красный - автосохранение" vertex="1">
+          <mxGeometry height="20" width="250" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="ydifSvVQQ7FqZEYnpbGd-170" parent="ydifSvVQQ7FqZEYnpbGd-161" style="text;whiteSpace=wrap;html=1;rounded=0;fillColor=none;strokeColor=none;align=left;verticalAlign=middle;" value="⚡ Серый - потоки" vertex="1">
+          <mxGeometry height="20" width="250" y="190" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
